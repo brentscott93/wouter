@@ -21,6 +21,7 @@ ui <- navbarPage("WOUTER",
                 column(6, 
                 HTML("
                     <h2>About</h2>
+
                    <p> Predicting endurance running performance is challening as there is a complex interaction between many underlying
                    physiological processes that ultimately govern a given performance (VO2max, lactate threshold, anaerobic power, etc).
                    Unfortunately, obtaining accurate values for these pertinent physiological markers is not reasonable for the average runner
@@ -44,16 +45,21 @@ ui <- navbarPage("WOUTER",
                    advanced modelling.
                     </p>
                     <p>
-                   WOUTER, which is a recursive acronym that stands for 'Wouter Online Utility for Training Endurance Running', is a web-based application that can
+                   To adress these concerns, first we developed this online tool, WOUTER, which is a recursive acronym that stands for 'Wouter Online Utility for Training Endurance Running'. This is a web-based application that can
                    take user inputted information of a runners personal best times for known race distances and perform the mathmetical optimzation of the line of best to generate
                    the estimations for an athlete's Critical Speed and D'. Additionally, WOUTER can simulate race outcomes using the D' Balance Model with a custom field of runners with 
                    unique Critical Speed and D' values to predict race outcomes. A very practical workflow then becomes 1) Estimate runner's Critical Speed and D', and then 2) Simulate race
                    prediction outcomes amongst the runners using the D' Balance Model,  all within this online tool. 
                     </p>
                     <p>
-                   Ultimately, WOUTER reduces the technological barrier for athlete's and coaches proving a free and easily accesible online tool to obtain high-performance modelling of running
+                   However, wanting to go beyond online simulations and theory, we developed the D' Balance Model into a Garmin application which turns D' Balance into a real time training metric.
+                   Now, any runner with a garmin watch can have access and incorporate the D' Balance Model into their training completely translating the theoretical model from 'bench-to-bedside' as they say in the
+                   medical research field. See more in the 'Garmin App' tab.
+                   </p>
+                    <p>
+                   Ultimately, WOUTER and the Garmin D' Balance app reduces the technological barrier for athlete's and coaches providing free and easily accesible tools to obtain high-performance modelling of running
                    performance. This results in the Critical Speed and D' Balance Model as being a less expensive, user-friendly, and realistic method for the average runner and coach
-                   to obtain high quality performance predictions independent of expensive laboratory based tests.
+                   to obtain high quality performance predictions and real time training metrics independent of expensive laboratory based tests.
            </p>"
          )
         )
@@ -120,12 +126,55 @@ ui <- navbarPage("WOUTER",
               )
              )
             ),
-       tabPanel("Disclaimer",
+
+       tabPanel("Garmin App",
+                column(3),
+                column(6,
+                HTML("
+                    <h2>Garmin app available in the Connect IQ Store</h2>
+                   <p>After validating and testing the D' Balance Model we developed a Garmin application which provides
+                       D' Balance updates to any Garmin watch owner. The Garmin app uses the same formulas as this
+                       online tool to calculate the D' Balance values and is inputted with real time updates
+                       of speed and distance from the Garmin device! We even performed a wear test to show that the Garmin app
+                       produces similiar results to the modeling we performed in our peer-reviewed paper.</p>
+
+                     <p>The Garmin app provides a data field that can be added to the built-in Garmin 'Run' activity
+                        you most likely are already using on your watch. When enabled, the app provides live D' Balance updates
+                        which includes total D' remaining (in meters), % D' remaining shown in an easy to view loading bar, and
+                        a 'TTI' value. TTI, or 'Time To Implosion', is a fun take on the theoretical calculation of how much longer
+                         you, in theory, can sustain your current pace until your D' is completed gone... Value is HH::MM::SS when running at a D' draining pace and shows --:--:-- when
+                        below your critical speed.</p>
+
+                    <h2>How to use the Garmin App</h2>
+                     <ol>
+                       <li>Download the <a href = 'https://apps.garmin.com/en-US/apps/35a022c2-2a65-4e36-b759-5677bfa6a496?tab=reviews&displayCurrentVersion=true'>
+                                        D' Balance Data Field</a> from the Connect IQ Store</li>
+                       <li>Add the D' Balance data field to your 'Run' activity on your watch (Run > Settings (hold up arrow) > Data Screens).
+                            <a href='https://support.garmin.com/en-US/?faq=gIGxb776tt1ZL8bG0iO3W7'>
+                             Consult the Garmin website for model specifics
+                             </a></li>
+                      <li>Estimate your CS and D' using WOUTER ('Critical Speed' tab)</li>
+                      <li>Input your CS and D'values into your settings for the Garmin app in the Connect IQ store</li>
+                      <li>Set a new PR</li>
+                     </ol>
+                    <p>
+                    A note on D' Balance Model - currently, there is only support for level running. Results will be best/most useful
+                    on a track or other flat surfaces.
+           </p>"
+         )
+        )
+       ),
+       tabPanel("Disclaimers",
          column(3),
          column(6,
-         HTML("<h6>This is a random web application made by some random guy on the internet. 
-            <a href='https://github.com/brentscott93/WOUTER'>
-            You should verify all the calculations by looking through the source code.</a></h6>")
+         HTML("<h6>This online tool is an open source project written in R developed by the <a href='https://sites.google.com/umass.edu/umill?pli=1'>
+               University of Massachusetts Integrated Locomotion Lab</a>.
+            <a href='https://github.com/brentscott93/WOUTER'>You can find the source code here.
+            </a> Contributions welcome.</h6>
+              <h6>Remember, 'all models are wrong, but some are useful'. There is no guaruntee that any predictions made by any
+                  tools, inlcuding these one, will be 100% correct 100% of the time.</h6>
+               <h6>Lastly, thanks to Dr. Wouter Hoogkamer's Energetics of Human Locomotion (KIN 697u) class at UMass Amherst
+                  for spawning this fun project. Side note, Dr. H had no involvement in the naming of these tools 🙃")
                 )
        ),
       )
